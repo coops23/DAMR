@@ -1,0 +1,46 @@
+unsigned int command = 0b0000 0000 0000 0000
+
+[3:0] = opcode:
+	0 = move_servo_bot
+	1 = move_servo_top
+	2 = pos_servo_bot
+	3 = pos_servo_top
+	4 = forward
+	5 = backward
+	6 = left
+	7 = right
+	8 = stop
+	9 = gyro_read
+	10 = distance_read
+
+[15:4] = value:
+	move_servo_bot  value from 40 to 180
+	move_servo_top	value from 0 to 180
+	pos_servo_bot	N/A
+	pos_servo_top	N/A
+	forward		encoder ticks
+	backward	encoder ticks
+	left		encoder ticks
+	right		encoder ticks
+	stop		N/A	
+	gyro_read 	N/A
+	distance_read	N/A
+
+unsigned int16_t response = 0b0000 0000 0000 0000
+
+[3:0] = execution:
+	0 = general error
+	1 = success
+
+[15:4] = response:
+	move_servo_bot  N/A
+	move_servo_top	N/A
+	pos_servo_bot	position
+	pos_servo_top	position
+	forward		N/A
+	backward	N/A
+	left		N/A
+	right		N/A
+	stop		N/A	
+	gyro_read 	xyz reading
+	distance_read	distance in mm
